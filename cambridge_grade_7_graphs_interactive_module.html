@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <!-- Metadata viewport responsif dan dukungan karakter -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bab 11: Graphs — Materi Interaktif Matematika Kelas 7 (Cambridge)</title>
+
+  <!-- Memuat Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Memuat Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    // Konfigurasi tema Tailwind untuk estetika modern & edukatif
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            cambridge: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+              800: '#1e3a8a',
+              900: '#172554',
+            },
+            tealaccent: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              600: '#0d9488',
+              700: '#0f766e',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Gaya tambahan untuk scrollbar halus dan kartu interaktif */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+    }
+    .step-badge {
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+
+  <!-- ==================== NAVBAR ATAS ==================== -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Brand / Judul -->
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-teal-600 text-white font-extrabold flex items-center justify-center shadow-sm shrink-0">
+            11
+          </div>
+          <div class="truncate">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-700 block">Cambridge Lower Secondary • Grade 7</span>
+            <h1 class="text-sm sm:text-base font-bold text-slate-900 truncate">Bab 11: Graphs (Grafik &amp; Fungsi Linear)</h1>
+          </div>
+        </div>
+
+        <!-- Navigasi cepat antar bagian -->
+        <nav class="hidden lg:flex items-center gap-1 text-xs font-semibold text-slate-600">
+          <a href="#tujuan" class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition">1. Tujuan</a>
+          <a href="#penerapan" class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition">2. Penerapan Nyata</a>
+          <a href="#materi-11-1" class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition">11.1 Fungsi</a>
+          <a href="#materi-11-2" class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition">11.2 Grafik Fungsi</a>
+          <a href="#materi-11-3" class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition">11.3 Garis Sejajar Sumbu</a>
+          <a href="#materi-11-4" class="px-3 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition">11.4 Interpretasi Grafik</a>
+          <a href="#latihan-terbimbing" class="px-3 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm ml-1">Latihan Terbimbing</a>
+        </nav>
+
+        <!-- Ringkasan Progres Latihan -->
+        <div class="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200 shrink-0">
+          <span class="text-xs font-medium text-slate-600 hidden sm:inline">Skor Latihan:</span>
+          <span id="nav-score" class="text-xs sm:text-sm font-bold text-blue-700">0 / 5</span>
+        </div>
+      </div>
+
+      <!-- Navigasi mobile / tablet -->
+      <div class="flex lg:hidden items-center gap-2 overflow-x-auto pb-2.5 pt-1 text-xs font-semibold text-slate-600">
+        <a href="#tujuan" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-100 hover:text-blue-800 whitespace-nowrap">1. Tujuan</a>
+        <a href="#penerapan" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-100 hover:text-blue-800 whitespace-nowrap">2. Penerapan Nyata</a>
+        <a href="#materi-11-1" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-100 hover:text-blue-800 whitespace-nowrap">11.1 Fungsi</a>
+        <a href="#materi-11-2" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-100 hover:text-blue-800 whitespace-nowrap">11.2 Grafik</a>
+        <a href="#materi-11-3" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-100 hover:text-blue-800 whitespace-nowrap">11.3 Garis Sejajar</a>
+        <a href="#materi-11-4" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-100 hover:text-blue-800 whitespace-nowrap">11.4 Interpretasi</a>
+        <a href="#latihan-terbimbing" class="px-2.5 py-1.5 rounded-lg bg-blue-600 text-white whitespace-nowrap">Latihan Terbimbing</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== KONTEN UTAMA ==================== -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-16">
+
+    <!-- Hero Banner -->
+    <section class="rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-teal-800 text-white p-6 sm:p-10 shadow-lg relative overflow-hidden">
+      <div class="relative z-10 max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/20 text-xs font-semibold mb-4">
+          <span>Kurikulum Cambridge • Stage 7 (Kelas 7)</span>
+          <span>•</span>
+          <span>Aljabar &amp; Grafik</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight mb-3">
+          Memahami Hubungan Dua Variabel Melalui Fungsi &amp; Grafik Garis Lurus
+        </h2>
+        <p class="text-blue-100 text-sm sm:text-base leading-relaxed mb-6">
+          Pelajari cara menuliskan fungsi aljabar dari situasi sehari-hari, menyusun tabel nilai, menggambar grafik fungsi linear dan garis sejajar sumbu koordinat, serta membaca laju perubahan (<em>rate of change</em>) dan gradien secara visual.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#tujuan" class="px-4 py-2.5 rounded-xl bg-white text-blue-900 font-bold text-sm hover:bg-blue-50 transition shadow">
+            Mulai dari Tujuan
+          </a>
+          <a href="#materi-11-1" class="px-4 py-2.5 rounded-xl bg-blue-700/80 hover:bg-blue-700 text-white font-semibold text-sm border border-white/20 transition">
+            Pelajari Materi Lengkap
+          </a>
+          <a href="#latihan-terbimbing" class="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm transition shadow">
+            Latihan Soal Terbimbing
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BAGIAN 1: TUJUAN PEMBELAJARAN ==================== -->
+    <section id="tujuan" class="scroll-mt-24 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 font-extrabold flex items-center justify-center text-sm">1</span>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Learning Objectives</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Tujuan Pembelajaran Bab 11: Graphs</h3>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+          Berdasarkan Bab 11 (<em>Graphs</em>) pada buku matematika kelas 7 kurikulum Cambridge, setelah mempelajari modul ini kamu diharapkan mampu mencapai kompetensi berikut:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Tujuan 1 -->
+          <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-100 flex items-start gap-3.5">
+            <div class="w-7 h-7 rounded-lg bg-blue-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">11.1</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm sm:text-base mb-1">Menyatakan Situasi dalam Bentuk Fungsi</h4>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Memahami hubungan antara dua variabel (misalnya <span class="font-mono font-semibold text-blue-800">x</span> dan <span class="font-mono font-semibold text-blue-800">y</span>) dan menuliskannya dalam kalimat maupun fungsi aljabar sederhana.
+              </p>
+            </div>
+          </div>
+
+          <!-- Tujuan 2 -->
+          <div class="p-4 rounded-xl bg-teal-50/70 border border-teal-100 flex items-start gap-3.5">
+            <div class="w-7 h-7 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">11.2</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm sm:text-base mb-1">Menggambar Grafik Fungsi Linear</h4>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Menyusun tabel nilai untuk fungsi berbentuk <span class="font-mono font-semibold text-teal-800">y = x + c</span> atau <span class="font-mono font-semibold text-teal-800">y = mx</span>, memplot pasangan koordinat, serta menguji apakah suatu titik terletak pada garis.
+              </p>
+            </div>
+          </div>
+
+          <!-- Tujuan 3 -->
+          <div class="p-4 rounded-xl bg-indigo-50/70 border border-indigo-100 flex items-start gap-3.5">
+            <div class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">11.3</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm sm:text-base mb-1">Mengenali Garis Sejajar Sumbu Koordinat</h4>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Mengidentifikasi dan menuliskan persamaan garis horizontal (<span class="font-mono font-semibold text-indigo-800">y = k</span>, sejajar sumbu-<span class="font-mono">x</span>) dan garis vertikal (<span class="font-mono font-semibold text-indigo-800">x = k</span>, sejajar sumbu-<span class="font-mono">y</span>).
+              </p>
+            </div>
+          </div>
+
+          <!-- Tujuan 4 -->
+          <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-100 flex items-start gap-3.5">
+            <div class="w-7 h-7 rounded-lg bg-amber-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">11.4</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm sm:text-base mb-1">Menafsirkan Grafik &amp; Laju Perubahan</h4>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Membaca perubahan variabel terhadap waktu, menghitung laju perubahan (<em>rate</em>), memahami gradien positif, negatif, dan nol, serta menjelaskan bentuk grafik pada konteks nyata.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BAGIAN 2: PENERAPAN NYATA ==================== -->
+    <section id="penerapan" class="scroll-mt-24 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 font-extrabold flex items-center justify-center text-sm">2</span>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-600">Real-Life Connections</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Penerapan Nyata Grafik &amp; Fungsi</h3>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Grafik menampilkan hubungan antara dua variabel sebagai gambar visual yang mudah dipahami. Dalam PDF Bab 11, banyak situasi kehidupan nyata dimodelkan menggunakan fungsi dan grafik:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-blue-300 transition">
+            <div class="text-lg font-extrabold text-blue-700 mb-1">1. Konversi Mata Uang</div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Menghitung nilai tukar antar mata uang, seperti Hong Kong Dollar (HK$) ke Indian Rupee (₹), Turkish lira ke Japanese yen, atau US$ ke Libyan dinar.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-blue-300 transition">
+            <div class="text-lg font-extrabold text-blue-700 mb-1">2. Tarif &amp; Biaya Layanan</div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Menentukan biaya panggilan telepon berdasarkan durasi (menit), biaya listrik mesin per jam, atau ongkos taksi dengan biaya awal ditambah tarif per menit.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-blue-300 transition">
+            <div class="text-lg font-extrabold text-blue-700 mb-1">3. Jarak, Kecepatan &amp; Waktu</div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Mengamati jarak tempuh pelari dalam lomba 5 km, anak berjalan kaki, atau percepatan mobil dari diam hingga mencapai kecepatan tertentu.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-blue-300 transition">
+            <div class="text-lg font-extrabold text-blue-700 mb-1">4. Pengurangan &amp; Konsumsi</div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Melihat sisa bensin di tangki mobil selama perjalanan, panjang lilin yang perlahan habis terbakar, atau pendinginan air hingga suhu ruang.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-blue-300 transition">
+            <div class="text-lg font-extrabold text-blue-700 mb-1">5. Pertumbuhan &amp; Pengukuran</div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Mencatat pertambahan tinggi tanaman dari hari ke hari, kenaikan massa bayi seiring bertambahnya usia, atau kedalaman air yang mengalir ke vas.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-blue-300 transition">
+            <div class="text-lg font-extrabold text-blue-700 mb-1">6. Geometri &amp; Tata Letak Grid</div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Menentukan batas persegi atau persegi panjang pada bidang koordinat menggunakan garis horizontal dan vertikal.
+            </p>
+          </div>
+        </div>
+
+        <!-- Simulator Penerapan Nyata Interaktif -->
+        <div class="rounded-2xl bg-gradient-to-r from-slate-900 to-blue-950 text-white p-5 sm:p-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-teal-300">Simulasi Cepat Penerapan Nyata</span>
+              <h4 class="text-base sm:text-lg font-bold">Uji Hubungan Dua Variabel Secara Langsung</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" onclick="setScenario('phone')" id="btn-scen-phone" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-teal-500 text-slate-950 transition">
+                Panggilan Telepon ($0.4/mnt)
+              </button>
+              <button type="button" onclick="setScenario('taxi')" id="btn-scen-taxi" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition">
+                Tarif Taksi ($4 + $0.6/mnt)
+              </button>
+              <button type="button" onclick="setScenario('petrol')" id="btn-scen-petrol" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition">
+                Sisa Bensin (30L - 6L/jam)
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div class="space-y-3">
+              <p id="scen-desc" class="text-xs sm:text-sm text-blue-100 leading-relaxed"></p>
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span id="scen-input-label" class="text-teal-300">Input (t):</span>
+                  <span id="scen-input-val" class="font-mono text-white">10</span>
+                </div>
+                <input id="scen-slider" type="range" min="0" max="30" value="10" oninput="updateScenarioSim()" class="w-full accent-teal-400 cursor-pointer" />
+              </div>
+              <div class="p-3.5 rounded-xl bg-white/10 border border-white/15 flex items-center justify-between">
+                <div>
+                  <span class="text-xs text-blue-200 block">Rumus Fungsi</span>
+                  <span id="scen-formula" class="font-mono font-bold text-sm sm:text-base text-amber-300">c = 0.4t</span>
+                </div>
+                <div class="text-right">
+                  <span id="scen-output-label" class="text-xs text-blue-200 block">Hasil</span>
+                  <span id="scen-output-val" class="font-mono font-extrabold text-lg sm:text-xl text-teal-300">$4.00</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-2 text-slate-900">
+              <canvas id="scenarioCanvas" class="w-full h-48 block rounded-lg"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BAGIAN 3: MATERI LENGKAP & CONTOH SOAL RINCI ==================== -->
+    <section id="materi-lengkap" class="space-y-12">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-extrabold flex items-center justify-center text-sm">3</span>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Comprehensive Lessons &amp; Worked Examples</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Materi Lengkap &amp; Contoh Soal Rinci</h3>
+        </div>
+      </div>
+
+      <!-- ---------- SUB-BAB 11.1: FUNCTIONS ---------- -->
+      <article id="materi-11-1" class="scroll-mt-24 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <span class="inline-block px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 text-xs font-bold mb-2">Sub-bab 11.1</span>
+          <h4 class="text-xl sm:text-2xl font-extrabold text-slate-900">Functions (Fungsi)</h4>
+          <p class="text-sm sm:text-base text-slate-600 mt-1">
+            Sebuah <strong>fungsi (function)</strong> menunjukkan hubungan antara dua <strong>variabel (variables)</strong>. Variabel adalah besaran yang nilainya dapat berubah-ubah, sering ditulis menggunakan huruf seperti <span class="font-mono font-semibold">x</span> dan <span class="font-mono font-semibold">y</span>, atau huruf lain yang sesuai dengan konteks.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h5 class="font-bold text-slate-900 mb-1.5">Konsep Dasar dari Buku (Contoh Usia)</h5>
+            <p class="text-slate-600 leading-relaxed">
+              Misalnya usia Maryam adalah <span class="font-mono font-semibold">m</span> tahun dan usia Jamal adalah <span class="font-mono font-semibold">j</span> tahun, dengan Maryam 6 tahun lebih tua dari Jamal. Hubungan kedua variabel ini ditulis sebagai fungsi:
+            </p>
+            <div class="mt-2 p-2.5 rounded-lg bg-blue-50 border border-blue-200 font-mono font-bold text-blue-900 text-center">
+              m = j + 6
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h5 class="font-bold text-slate-900 mb-1.5">Kata Kunci Penting Sub-bab 11.1</h5>
+            <ul class="space-y-1.5 text-slate-600 text-xs sm:text-sm">
+              <li><strong class="text-slate-800">Function (Fungsi):</strong> aturan atau hubungan matematis antara dua variabel.</li>
+              <li><strong class="text-slate-800">Variable (Variabel):</strong> simbol huruf yang mewakili nilai yang bisa berubah.</li>
+              <li><strong class="text-slate-800">Kata petunjuk operasi:</strong> "lebih banyak/lebih tua" (<span class="font-mono">+</span>), "lebih sedikit/lebih muda" (<span class="font-mono">-</span>), "kali lipat/<em>times</em>" (<span class="font-mono">&times;</span>), "per unit" (<span class="font-mono">&divide;</span> atau <span class="font-mono">&times;</span>).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contoh Soal Rinci 11.1 -->
+        <div class="rounded-2xl border border-blue-200 bg-blue-50/40 p-5 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
+              Contoh Soal Rinci 11.1 (Worked Example 11.1 &amp; Perluasan)
+            </span>
+          </div>
+
+          <div class="space-y-2 text-sm text-slate-800">
+            <p class="font-semibold">Soal:</p>
+            <ol class="list-decimal list-inside space-y-1 text-slate-700">
+              <li>1 Hong Kong dollar (HK$1) dapat ditukar dengan 9 Indian rupees (₹9).
+                <ul class="list-disc list-inside ml-5 mt-1 space-y-0.5 text-xs sm:text-sm">
+                  <li><strong>(a)</strong> Berapa Indian rupees yang didapat untuk menukar HK$20?</li>
+                  <li><strong>(b)</strong> Tuliskan fungsi yang menunjukkan hubungan antara <span class="font-mono">d</span> (Hong Kong dollars) dan <span class="font-mono">r</span> (Indian rupees).</li>
+                </ul>
+              </li>
+              <li>Penukaran <span class="font-mono">x</span> US dollars menjadi <span class="font-mono">y</span> Indian rupees dinyatakan dengan fungsi <span class="font-mono font-bold">y = 70x</span>. Jelaskan arti fungsi ini dengan kata-kata.</li>
+            </ol>
+          </div>
+
+          <div class="bg-white rounded-xl border border-blue-100 p-4 sm:p-5 space-y-3 text-xs sm:text-sm">
+            <div class="font-bold text-blue-900">Pembahasan Langkah demi Langkah:</div>
+            <div class="space-y-2 text-slate-700 leading-relaxed">
+              <p><strong>Langkah 1 (Menjawab 1a):</strong> Karena HK$1 bernilai ₹9, maka untuk HK$20 kalikan 20 dengan 9:
+                <span class="font-mono font-bold text-slate-900 block mt-0.5">20 &times; 9 = 180 Indian rupees (₹180).</span>
+              </p>
+              <p><strong>Langkah 2 (Menjawab 1b):</strong> Jika jumlah HK$ adalah <span class="font-mono">d</span> dan jumlah rupee adalah <span class="font-mono">r</span>, maka setiap <span class="font-mono">d</span> dollar menghasilkan <span class="font-mono">9 &times; d</span> rupee. Jadi fungsinya:
+                <span class="font-mono font-bold text-blue-700 block mt-0.5">r = 9d</span>
+              </p>
+              <p><strong>Langkah 3 (Menjawab 2):</strong> Pada fungsi <span class="font-mono font-bold">y = 70x</span>, ketika <span class="font-mono">x = 1</span> (1 US dollar), diperoleh <span class="font-mono">y = 70 &times; 1 = 70</span>. Artinya: <strong>1 US dollar (US$1) dapat ditukar dengan 70 Indian rupees (₹70)</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- SUB-BAB 11.2: GRAPHS OF FUNCTIONS ---------- -->
+      <article id="materi-11-2" class="scroll-mt-24 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <span class="inline-block px-2.5 py-1 rounded-md bg-teal-100 text-teal-800 text-xs font-bold mb-2">Sub-bab 11.2</span>
+          <h4 class="text-xl sm:text-2xl font-extrabold text-slate-900">Graphs of Functions (Grafik Fungsi Linear)</h4>
+          <p class="text-sm sm:text-base text-slate-600 mt-1">
+            Untuk menggambar grafik fungsi linear seperti <span class="font-mono font-semibold">y = x + c</span> atau <span class="font-mono font-semibold">y = mx</span>, kita mensubstitusikan beberapa nilai <span class="font-mono font-semibold">x</span> ke dalam rumus fungsi untuk mencari nilai <span class="font-mono font-semibold">y</span>, menuliskannya dalam <strong>tabel nilai</strong>, lalu memplot pasangan koordinat <span class="font-mono font-semibold">(x, y)</span> pada bidang Kartesius. Titik-titik tersebut akan membentuk <strong>garis lurus</strong>.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="font-bold text-slate-900 mb-1">1. Tabel Nilai &amp; Koordinat</div>
+            <p class="text-slate-600 leading-relaxed">
+              Contoh fungsi <span class="font-mono font-semibold">y = x + 3</span>: jika <span class="font-mono">x = -4</span> maka <span class="font-mono">y = -1</span> sehingga titiknya <span class="font-mono">(-4, -1)</span>; jika <span class="font-mono">x = 2</span> maka <span class="font-mono">y = 5</span> sehingga titiknya <span class="font-mono">(2, 5)</span>.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="font-bold text-slate-900 mb-1">2. Menguji Titik pada Garis</div>
+            <p class="text-slate-600 leading-relaxed">
+              Suatu titik <span class="font-mono">(x, y)</span> terletak pada garis fungsi jika saat <span class="font-mono">x</span> dimasukkan ke rumus, hasilnya sama dengan nilai <span class="font-mono">y</span> pada titik tersebut.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="font-bold text-slate-900 mb-1">3. Pola Garis y = x + c dan y = mx</div>
+            <p class="text-slate-600 leading-relaxed">
+              Garis <span class="font-mono">y = x + c</span> selalu sejajar dengan <span class="font-mono">y = x</span> dan memotong sumbu-<span class="font-mono">y</span> di <span class="font-mono">(0, c)</span>. Garis <span class="font-mono">y = mx</span> (dengan <span class="font-mono">m &gt; 0</span>) selalu melewati titik asal <span class="font-mono">(0, 0)</span> dan miring ke atas dari kiri ke kanan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contoh Soal Rinci 11.2 + Grafik Interaktif -->
+        <div class="rounded-2xl border border-teal-200 bg-teal-50/40 p-5 sm:p-6 space-y-5">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-teal-800 bg-teal-100 px-3 py-1 rounded-full">
+              Contoh Soal Rinci 11.2 (Worked Example 11.2) &amp; Plotter Interaktif
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div class="lg:col-span-7 space-y-3 text-xs sm:text-sm">
+              <p class="font-semibold text-slate-900">Soal: Diketahui fungsi <span class="font-mono font-bold">y = 0.5x</span>.</p>
+              <ul class="list-disc list-inside space-y-1 text-slate-700">
+                <li><strong>(a)</strong> Lengkapi tabel nilai untuk <span class="font-mono">x = -6, -3, 0, 3, 6</span>.</li>
+                <li><strong>(b)</strong> Gambar grafik fungsi tersebut (garis berlanjut selamanya di kedua ujung).</li>
+                <li><strong>(c)</strong> Tunjukkan bahwa titik <span class="font-mono">(-24, -12)</span> berada pada garis, sedangkan <span class="font-mono">(15, 30)</span> tidak berada pada garis.</li>
+              </ul>
+
+              <div class="bg-white rounded-xl border border-teal-100 p-4 space-y-2.5 text-slate-700 leading-relaxed">
+                <div class="font-bold text-teal-900">Pembahasan Rinci:</div>
+                <p><strong>(a) Tabel Nilai (<span class="font-mono">y = 0.5x</span>, artinya setengah dari <span class="font-mono">x</span>):</strong></p>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-center border-collapse text-xs font-mono">
+                    <thead>
+                      <tr class="bg-teal-50 text-teal-900">
+                        <th class="border border-teal-200 px-2 py-1.5">x</th>
+                        <th class="border border-teal-200 px-2 py-1.5">-6</th>
+                        <th class="border border-teal-200 px-2 py-1.5">-3</th>
+                        <th class="border border-teal-200 px-2 py-1.5">0</th>
+                        <th class="border border-teal-200 px-2 py-1.5">3</th>
+                        <th class="border border-teal-200 px-2 py-1.5">6</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border border-teal-200 px-2 py-1.5 font-bold bg-slate-50">y = 0.5x</td>
+                        <td class="border border-teal-200 px-2 py-1.5">-3</td>
+                        <td class="border border-teal-200 px-2 py-1.5">-1.5</td>
+                        <td class="border border-teal-200 px-2 py-1.5">0</td>
+                        <td class="border border-teal-200 px-2 py-1.5">1.5</td>
+                        <td class="border border-teal-200 px-2 py-1.5">3</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>(b) Grafik:</strong> Plot titik <span class="font-mono">(-6, -3), (-3, -1.5), (0, 0), (3, 1.5), (6, 3)</span> lalu tarik garis lurus melewati semuanya.</p>
+                <p><strong>(c) Uji Titik:</strong><br/>
+                  • Untuk <span class="font-mono">x = -24</span>: <span class="font-mono">y = 0.5 &times; (-24) = -12</span>. Cocok dengan <span class="font-mono">(-24, -12)</span> &rarr; <strong>berada pada garis</strong>.<br/>
+                  • Untuk <span class="font-mono">x = 15</span>: <span class="font-mono">y = 0.5 &times; 15 = 7.5</span>. Titik pada garis adalah <span class="font-mono">(15, 7.5)</span>, sehingga <span class="font-mono">(15, 30)</span> <strong>tidak berada pada garis</strong> (posisinya di atas garis).
+                </p>
+              </div>
+            </div>
+
+            <!-- Eksplorasi Grafik Fungsi y = mx + c -->
+            <div class="lg:col-span-5 bg-white rounded-xl border border-teal-200 p-4 space-y-3">
+              <div class="text-xs font-bold text-teal-900">Eksplorasi Grafik <span class="font-mono">y = mx + c</span></div>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">Kemiringan <span class="font-mono">m</span>: <span id="m-val" class="font-mono text-teal-700 font-bold">0.5</span></label>
+                  <input id="m-slider" type="range" min="-2" max="3" step="0.5" value="0.5" oninput="drawLinearExplorer()" class="w-full accent-teal-600 cursor-pointer" />
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">Geser <span class="font-mono">c</span>: <span id="c-val" class="font-mono text-teal-700 font-bold">0</span></label>
+                  <input id="c-slider" type="range" min="-4" max="4" step="1" value="0" oninput="drawLinearExplorer()" class="w-full accent-teal-600 cursor-pointer" />
+                </div>
+              </div>
+              <div class="text-center font-mono text-xs sm:text-sm font-bold text-blue-800 bg-blue-50 py-1.5 rounded-lg" id="linear-eq-display">
+                y = 0.5x
+              </div>
+              <canvas id="linearExplorerCanvas" class="w-full h-56 block rounded-lg border border-slate-200 bg-white"></canvas>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- SUB-BAB 11.3: LINES PARALLEL TO THE AXES ---------- -->
+      <article id="materi-11-3" class="scroll-mt-24 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <span class="inline-block px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-800 text-xs font-bold mb-2">Sub-bab 11.3</span>
+          <h4 class="text-xl sm:text-2xl font-extrabold text-slate-900">Lines Parallel to the Axes (Garis Sejajar Sumbu Koordinat)</h4>
+          <p class="text-sm sm:text-base text-slate-600 mt-1">
+            Pada bidang koordinat, ada garis khusus yang sejajar dengan sumbu-<span class="font-mono font-semibold">x</span> (horizontal) atau sejajar dengan sumbu-<span class="font-mono font-semibold">y</span> (vertikal). Nama garis sering disebut juga <strong>persamaan garis (equation of a line)</strong>.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-indigo-50/70 border border-indigo-200">
+            <h5 class="font-bold text-indigo-950 mb-1">Garis Horizontal (Sejajar Sumbu-x): <span class="font-mono">y = k</span></h5>
+            <p class="text-slate-700 leading-relaxed">
+              Semua titik pada garis ini memiliki nilai koordinat-<span class="font-mono font-bold">y</span> yang selalu sama, yaitu <span class="font-mono font-bold">k</span>, meskipun nilai <span class="font-mono">x</span> berubah. Contoh: garis yang melalui <span class="font-mono">(2, -5)</span> dan <span class="font-mono">(-6, -5)</span> memiliki persamaan <span class="font-mono font-bold text-indigo-700">y = -5</span>. Sumbu-<span class="font-mono">x</span> sendiri adalah garis <span class="font-mono font-bold">y = 0</span>.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-purple-50/70 border border-purple-200">
+            <h5 class="font-bold text-purple-950 mb-1">Garis Vertikal (Sejajar Sumbu-y): <span class="font-mono">x = k</span></h5>
+            <p class="text-slate-700 leading-relaxed">
+              Semua titik pada garis ini memiliki nilai koordinat-<span class="font-mono font-bold">x</span> yang selalu sama, yaitu <span class="font-mono font-bold">k</span>, memotong sumbu-<span class="font-mono">x</span> di <span class="font-mono">k</span>. Contoh: garis vertikal yang melewati <span class="font-mono">(4, 2)</span> dan <span class="font-mono">(4, -3)</span> bernama <span class="font-mono font-bold text-purple-700">x = 4</span>. Sumbu-<span class="font-mono">y</span> sendiri adalah garis <span class="font-mono font-bold">x = 0</span>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contoh Soal Rinci 11.3 -->
+        <div class="rounded-2xl border border-indigo-200 bg-indigo-50/40 p-5 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-800 bg-indigo-100 px-3 py-1 rounded-full">
+              Contoh Soal Rinci 11.3 (Worked Example 11.4 &amp; Persegi Panjang pada Grid)
+            </span>
+          </div>
+
+          <div class="space-y-2 text-xs sm:text-sm text-slate-700">
+            <p class="font-semibold text-slate-900">Soal:</p>
+            <p>Titik <span class="font-mono">P(2, -5)</span> dan <span class="font-mono">Q(-6, -5)</span> diplot pada bidang koordinat lalu ditarik garis lurus melewatinya. Selain itu, suatu persegi panjang dibatasi oleh garis <span class="font-mono">x = -2</span>, <span class="font-mono">x = 4</span>, <span class="font-mono">y = -3</span>, dan <span class="font-mono">y = 2</span>.</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-indigo-100 p-4 sm:p-5 space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+            <div class="font-bold text-indigo-950">Pembahasan Rinci:</div>
+            <p><strong>1. Garis melalui P(2, -5) dan Q(-6, -5):</strong> Kedua titik mempunyai koordinat-<span class="font-mono">y</span> yang sama yaitu <span class="font-mono">-5</span>. Garis ini mendatar (sejajar sumbu-<span class="font-mono">x</span>) dengan nama/persamaan <span class="font-mono font-bold text-indigo-700">y = -5</span>. Titik lain pada garis ini misalnya <span class="font-mono">(0, -5)</span> atau <span class="font-mono">(4, -5)</span>.</p>
+            <p><strong>2. Titik Sudut Persegi Panjang (<span class="font-mono">x = -2, x = 4, y = -3, y = 2</span>):</strong> Perpotongan garis vertikal dan horizontal menghasilkan empat titik sudut:</p>
+            <p class="font-mono font-semibold text-slate-900">A(4, 2), B(4, -3), C(-2, -3), dan D(-2, 2).</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- SUB-BAB 11.4: INTERPRETING GRAPHS ---------- -->
+      <article id="materi-11-4" class="scroll-mt-24 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <span class="inline-block px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 text-xs font-bold mb-2">Sub-bab 11.4</span>
+          <h4 class="text-xl sm:text-2xl font-extrabold text-slate-900">Interpreting Graphs &amp; Rates of Change (Menafsirkan Grafik &amp; Laju Perubahan)</h4>
+          <p class="text-sm sm:text-base text-slate-600 mt-1">
+            Grafik sering menunjukkan bagaimana suatu besaran berubah terhadap waktu. <strong>Laju (rate)</strong> menunjukkan seberapa besar perubahan suatu variabel per satu satuan waktu (misalnya biaya per menit, liter per jam, atau cm per detik).
+          </p>
+        </div>
+
+        <!-- Jenis Gradien / Kemiringan -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200">
+            <div class="font-bold text-emerald-900 mb-1">Gradien Positif (Positive Gradient)</div>
+            <p class="text-slate-700 leading-relaxed">
+              Grafik <strong>naik dari kiri ke kanan</strong>. Nilai pada sumbu vertikal bertambah seiring bertambahnya waktu (contoh: jarak tempuh pelari atau total biaya panggilan telepon).
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-rose-50 border border-rose-200">
+            <div class="font-bold text-rose-900 mb-1">Gradien Negatif (Negative Gradient)</div>
+            <p class="text-slate-700 leading-relaxed">
+              Grafik <strong>turun dari kiri ke kanan</strong>. Nilai pada sumbu vertikal berkurang seiring bertambahnya waktu (contoh: sisa bensin di mobil atau panjang lilin yang terbakar).
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-100 border border-slate-300">
+            <div class="font-bold text-slate-900 mb-1">Gradien Nol (Zero Gradient)</div>
+            <p class="text-slate-700 leading-relaxed">
+              Grafik <strong>mendatar (horizontal)</strong>, seperti garis <span class="font-mono font-bold">y = 5</span>. Tidak ada perubahan nilai vertikal saat variabel horizontal berubah.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contoh Soal Rinci 11.4 -->
+        <div class="rounded-2xl border border-amber-200 bg-amber-50/40 p-5 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-amber-900 bg-amber-100 px-3 py-1 rounded-full">
+              Contoh Soal Rinci 11.4 (Worked Example 11.5 &amp; 11.6)
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+            <!-- Contoh 11.5 -->
+            <div class="bg-white rounded-xl border border-amber-100 p-4 space-y-2 text-slate-700 leading-relaxed">
+              <div class="font-bold text-amber-950">Contoh 11.5: Biaya Panggilan Telepon (Garis Lurus)</div>
+              <p>Grafik lurus menunjukkan biaya panggilan: pada 1 menit = $0.4, 2 menit = $0.8, 3 menit = $1.2, 4 menit = $1.6, 5 menit = $2.0, 6 menit = $2.4, 7 menit = $2.8.</p>
+              <p>• <strong>Tarif per menit:</strong> <span class="font-mono font-bold">$0.4</span> per menit (kenaikan tetap setiap menit).</p>
+              <p>• <strong>Fungsi biaya (<span class="font-mono">c</span> dalam dolar, waktu <span class="font-mono">t</span> menit):</strong> <span class="font-mono font-bold text-blue-700">c = 0.4t</span>.</p>
+              <p>• <strong>Biaya 10 menit:</strong> <span class="font-mono font-bold">c = 0.4 &times; 10 = $4</span>.</p>
+            </div>
+
+            <!-- Contoh 11.6 -->
+            <div class="bg-white rounded-xl border border-amber-100 p-4 space-y-2 text-slate-700 leading-relaxed">
+              <div class="font-bold text-amber-950">Contoh 11.6: Pelari Lomba 5 km (Kurva)</div>
+              <p>Grafik menunjukkan jarak tempuh pelari selama perlombaan 5 km dari 0 sampai 20 menit.</p>
+              <p>• <strong>Waktu tempuh total:</strong> <span class="font-mono font-bold">20 menit</span> untuk 5 km.</p>
+              <p>• <strong>Jarak setelah 5 menit:</strong> <span class="font-mono font-bold">1.6 km</span> (dibaca dari sumbu waktu 5 ke kurva lalu ke sumbu jarak).</p>
+              <p>• <strong>Kecepatan tertinggi:</strong> saat grafik <strong>paling curam (steepest)</strong>, yaitu di dekat awal dan akhir lomba; lebih lambat di bagian tengah yang lebih landai.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ==================== BAGIAN 4: LATIHAN SOAL TERBIMBING ==================== -->
+    <section id="latihan-terbimbing" class="scroll-mt-24 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-xl bg-teal-600 text-white font-extrabold flex items-center justify-center text-sm">4</span>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-teal-600">Guided Practice</span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Latihan Soal Terbimbing (5 Soal Bertahap)</h3>
+          </div>
+        </div>
+
+        <button type="button" onclick="resetAllGuidedPractice()" class="self-start sm:self-auto px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-200 hover:bg-slate-300 text-slate-800 transition">
+          Reset Semua Latihan
+        </button>
+      </div>
+
+      <p class="text-slate-600 text-sm sm:text-base">
+        Setiap soal di bawah ini dipandu langkah demi langkah. Gunakan tombol <strong>Petunjuk</strong> bila perlu, masukkan jawabanmu, lalu klik <strong>Periksa Langkah</strong> untuk mendapatkan umpan balik instan.
+      </p>
+
+      <!-- Wadah 5 Latihan Terbimbing (dirender oleh JS agar interaktif & rapi) -->
+      <div id="guided-exercises-container" class="space-y-6"></div>
+
+      <!-- Kartu Ringkasan Akhir Latihan -->
+      <div id="practice-summary-card" class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h4 class="font-extrabold text-slate-900 text-base sm:text-lg">Status Penyelesaian Latihan Terbimbing</h4>
+          <p id="summary-text" class="text-xs sm:text-sm text-slate-600 mt-0.5">
+            Selesaikan seluruh soal di atas untuk menguasai Bab 11: Graphs.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <div class="px-4 py-2 rounded-xl bg-blue-50 border border-blue-200 text-center">
+            <span class="text-xs text-blue-700 font-semibold block">Terselesaikan</span>
+            <span id="completed-count" class="text-lg font-extrabold text-blue-900">0 / 5</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slate-900 text-slate-300 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div>
+        <span class="font-bold text-white">Bab 11: Graphs</span> — Modul Belajar Interaktif Matematika Kelas 7 (Kurikulum Cambridge).
+      </div>
+      <div class="text-slate-400">
+        Mencakup 11.1 Functions • 11.2 Graphs of Functions • 11.3 Lines Parallel to Axes • 11.4 Interpreting Graphs
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT INTERAKTIF ==================== -->
+  <script>
+    /**
+     * Data skenario penerapan nyata (Bagian 2)
+     */
+    const scenarios = {
+      phone: {
+        title: 'Panggilan Telepon ($0.4 / menit)',
+        desc: 'Berdasarkan Worked Example 11.5, biaya panggilan telepon naik $0.4 setiap menit.',
+        inputLabel: 'Durasi panggilan t (menit):',
+        outputLabel: 'Total Biaya (c):',
+        min: 0,
+        max: 25,
+        step: 1,
+        defaultVal: 10,
+        xAxisLabel: 'Waktu t (menit)',
+        yAxisLabel: 'Biaya c ($)',
+        formulaText: 'c = 0.4t',
+        calc: (t) => 0.4 * t,
+        formatOut: (val) => `$${val.toFixed(2)}`
+      },
+      taxi: {
+        title: 'Tarif Taksi ($4 awal + $0.6 / menit)',
+        desc: 'Berdasarkan Exercise 11.4 no. 5, taksi memiliki biaya awal $4 lalu bertambah setiap menit.',
+        inputLabel: 'Lama perjalanan t (menit):',
+        outputLabel: 'Total Ongkos ($):',
+        min: 0,
+        max: 30,
+        step: 1,
+        defaultVal: 10,
+        xAxisLabel: 'Waktu t (menit)',
+        yAxisLabel: 'Biaya ($)',
+        formulaText: 'Biaya = 4 + 0.6t',
+        calc: (t) => 4 + 0.6 * t,
+        formatOut: (val) => `$${val.toFixed(2)}`
+      },
+      petrol: {
+        title: 'Sisa Bensin Mobil (30 L awal, berkurang 6 L/jam)',
+        desc: 'Berdasarkan Exercise 11.4 no. 2, tangki bensin berisi 30 L di awal dan berkurang 6 L setiap jam.',
+        inputLabel: 'Waktu perjalanan t (jam):',
+        outputLabel: 'Sisa Bensin (L):',
+        min: 0,
+        max: 5,
+        step: 0.5,
+        defaultVal: 1.5,
+        xAxisLabel: 'Waktu t (jam)',
+        yAxisLabel: 'Bensin (L)',
+        formulaText: 'Bensin = 30 - 6t',
+        calc: (t) => Math.max(0, 30 - 6 * t),
+        formatOut: (val) => `${val.toFixed(1)} L`
+      }
+    };
+
+    let currentScenarioKey = 'phone';
+
+    /**
+     * Mengatur skenario penerapan nyata yang aktif
+     */
+    function setScenario(key) {
+      currentScenarioKey = key;
+      const sc = scenarios[key];
+
+      // Perbarui gaya tombol tab skenario
+      ['phone', 'taxi', 'petrol'].forEach((k) => {
+        const btn = document.getElementById(`btn-scen-${k}`);
+        if (k === key) {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-teal-500 text-slate-950 transition';
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white/10 text-white hover:bg-white/20 transition';
+        }
+      });
+
+      document.getElementById('scen-desc').textContent = sc.desc;
+      document.getElementById('scen-input-label').textContent = sc.inputLabel;
+      document.getElementById('scen-output-label').textContent = sc.outputLabel;
+      document.getElementById('scen-formula').textContent = sc.formulaText;
+
+      const slider = document.getElementById('scen-slider');
+      slider.min = sc.min;
+      slider.max = sc.max;
+      slider.step = sc.step;
+      slider.value = sc.defaultVal;
+
+      updateScenarioSim();
+    }
+
+    /**
+     * Memperbarui nilai & menggambar grafik skenario nyata
+     */
+    function updateScenarioSim() {
+      const sc = scenarios[currentScenarioKey];
+      const slider = document.getElementById('scen-slider');
+      const t = parseFloat(slider.value);
+      const y = sc.calc(t);
+
+      document.getElementById('scen-input-val').textContent = `${t}`;
+      document.getElementById('scen-output-val').textContent = sc.formatOut(y);
+
+      drawScenarioCanvas(sc, t, y);
+    }
+
+    /**
+     * Menggambar grafik responsif untuk simulasi skenario nyata
+     */
+    function drawScenarioCanvas(sc, activeX, activeY) {
+      const canvas = document.getElementById('scenarioCanvas');
+      if (!canvas) return;
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      const width = Math.max(240, rect.width);
+      const height = Math.max(160, rect.height);
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, width, height);
+
+      const padLeft = 42;
+      const padRight = 16;
+      const padTop = 14;
+      const padBottom = 28;
+      const plotW = width - padLeft - padRight;
+      const plotH = height - padTop - padBottom;
+
+      const maxX = sc.max;
+      const maxY = Math.max(sc.calc(sc.min), sc.calc(sc.max), 1);
+
+      // Grid ringan
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const gy = padTop + (plotH * i) / 4;
+        ctx.beginPath();
+        ctx.moveTo(padLeft, gy);
+        ctx.lineTo(padLeft + plotW, gy);
+        ctx.stroke();
+
+        const labelVal = (maxY * (4 - i)) / 4;
+        ctx.fillStyle = '#475569';
+        ctx.font = '10px Inter, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(labelVal.toFixed(0), padLeft - 6, gy + 3);
+      }
+
+      // Sumbu X & Y
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(padLeft, padTop);
+      ctx.lineTo(padLeft, padTop + plotH);
+      ctx.lineTo(padLeft + plotW, padTop + plotH);
+      ctx.stroke();
+
+      // Label sumbu X
+      ctx.fillStyle = '#334155';
+      ctx.font = 'bold 10px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(sc.xAxisLabel, padLeft + plotW / 2, height - 6);
+
+      // Garis fungsi
+      ctx.strokeStyle = '#0d9488';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      const steps = 40;
+      for (let s = 0; s <= steps; s++) {
+        const xv = sc.min + ((sc.max - sc.min) * s) / steps;
+        const yv = sc.calc(xv);
+        const px = padLeft + ((xv - sc.min) / (maxX - sc.min || 1)) * plotW;
+        const py = padTop + plotH - (yv / maxY) * plotH;
+        if (s === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+
+      // Titik aktif
+      const ax = padLeft + ((activeX - sc.min) / (maxX - sc.min || 1)) * plotW;
+      const ay = padTop + plotH - (activeY / maxY) * plotH;
+
+      ctx.setLineDash([4, 3]);
+      ctx.strokeStyle = '#64748b';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(ax, padTop + plotH);
+      ctx.lineTo(ax, ay);
+      ctx.lineTo(padLeft, ay);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#1d4ed8';
+      ctx.beginPath();
+      ctx.arc(ax, ay, 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    /**
+     * Menggambar grafik interaktif y = mx + c pada Sub-bab 11.2
+     */
+    function drawLinearExplorer() {
+      const m = parseFloat(document.getElementById('m-slider').value);
+      const c = parseFloat(document.getElementById('c-slider').value);
+
+      document.getElementById('m-val').textContent = `${m}`;
+      document.getElementById('c-val').textContent = `${c}`;
+
+      // Format penulisan persamaan yang rapi
+      let eq = 'y = ';
+      if (m === 0) {
+        eq += `${c}`;
+      } else {
+        if (m === 1) eq += 'x';
+        else if (m === -1) eq += '-x';
+        else eq += `${m}x`;
+
+        if (c > 0) eq += ` + ${c}`;
+        else if (c < 0) eq += ` - ${Math.abs(c)}`;
+      }
+      document.getElementById('linear-eq-display').textContent = eq;
+
+      const canvas = document.getElementById('linearExplorerCanvas');
+      if (!canvas) return;
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      const width = Math.max(220, rect.width);
+      const height = Math.max(180, rect.height);
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, width, height);
+
+      const range = 7; // rentang -7 sampai +7
+      const toPx = (x) => ((x + range) / (range * 2)) * width;
+      const toPy = (y) => ((range - y) / (range * 2)) * height;
+
+      // Grid unit
+      ctx.strokeStyle = '#f1f5f9';
+      ctx.lineWidth = 1;
+      for (let i = -range; i <= range; i++) {
+        ctx.beginPath();
+        ctx.moveTo(toPx(i), 0);
+        ctx.lineTo(toPx(i), height);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0, toPy(i));
+        ctx.lineTo(width, toPy(i));
+        ctx.stroke();
+      }
+
+      // Sumbu X dan Y utama
+      ctx.strokeStyle = '#475569';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(0, toPy(0));
+      ctx.lineTo(width, toPy(0));
+      ctx.moveTo(toPx(0), 0);
+      ctx.lineTo(toPx(0), height);
+      ctx.stroke();
+
+      // Label angka sumbu
+      ctx.fillStyle = '#475569';
+      ctx.font = '9px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      [-6, -4, -2, 2, 4, 6].forEach((n) => {
+        ctx.fillText(`${n}`, toPx(n), toPy(0) + 11);
+        ctx.fillText(`${n}`, toPx(0) - 9, toPy(n) + 3);
+      });
+
+      // Garis acuan y = x tipis putus-putus untuk perbandingan
+      ctx.setLineDash([3, 3]);
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(toPx(-range), toPy(-range));
+      ctx.lineTo(toPx(range), toPy(range));
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Garis y = mx + c
+      ctx.strokeStyle = '#0d9488';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(toPx(-range), toPy(m * -range + c));
+      ctx.lineTo(toPx(range), toPy(m * range + c));
+      ctx.stroke();
+
+      // Titik potong sumbu-y (0, c)
+      if (Math.abs(c) <= range) {
+        ctx.fillStyle = '#1d4ed8';
+        ctx.beginPath();
+        ctx.arc(toPx(0), toPy(c), 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    /**
+     * Data 5 Latihan Soal Terbimbing berbasis PDF Bab 11
+     */
+    const guidedExercises = [
+      {
+        id: 'ex1',
+        badge: 'Latihan 1 • Sub-bab 11.1 (Fungsi)',
+        title: 'Keliling Segitiga Sama Sisi',
+        context: 'Setiap sisi segitiga sama sisi (equilateral triangle) memiliki panjang s cm dan keliling p cm.',
+        steps: [
+          {
+            prompt: 'Langkah 1: Jika panjang sisi s = 5 cm, berapa keliling p (dalam cm)?',
+            hint: 'Segitiga sama sisi memiliki 3 sisi yang sama panjang: keliling = 3 × panjang sisi.',
+            placeholder: 'Masukkan angka saja, misal: 15',
+            validate: (raw) => {
+              const num = parseFloat(raw.replace(',', '.'));
+              return Math.abs(num - 15) < 0.001;
+            },
+            explanation: 'Benar! Keliling segitiga sama sisi dengan sisi 5 cm adalah 3 × 5 = 15 cm.'
+          },
+          {
+            prompt: 'Langkah 2: Tuliskan fungsi yang menghubungkan keliling p dengan panjang sisi s.',
+            hint: 'Gunakan huruf p dan s, misal: p = 3s',
+            placeholder: 'Contoh: p = 3s',
+            validate: (raw) => {
+              const cleaned = raw.toLowerCase().replace(/\s+/g, '');
+              return cleaned === 'p=3s' || cleaned === 'p=s*3' || cleaned === 'p=s+s+s';
+            },
+            explanation: 'Tepat! Fungsi yang menyatakan keliling p dalam s adalah p = 3s.'
+          }
+        ]
+      },
+      {
+        id: 'ex2',
+        badge: 'Latihan 2 • Sub-bab 11.2 (Grafik Fungsi)',
+        title: 'Tabel Nilai & Menguji Titik pada Garis y = x - 2',
+        context: 'Diberikan fungsi linear y = x - 2.',
+        steps: [
+          {
+            prompt: 'Langkah 1: Jika x = 6, berapakah nilai y pada fungsi y = x - 2?',
+            hint: 'Substitusikan x = 6 ke rumus y = x - 2.',
+            placeholder: 'Nilai y =',
+            validate: (raw) => Math.abs(parseFloat(raw.replace(',', '.')) - 4) < 0.001,
+            explanation: 'Benar! Ketika x = 6, maka y = 6 - 2 = 4, sehingga titik (6, 4) terletak pada garis.'
+          },
+          {
+            prompt: 'Langkah 2: Apakah titik (25, 23) terletak pada garis y = x - 2? (Jawab: ya atau tidak)',
+            hint: 'Hitung nilai y saat x = 25: 25 - 2 = ... lalu bandingkan dengan koordinat-y titik tersebut (23).',
+            placeholder: 'ya / tidak',
+            validate: (raw) => {
+              const c = raw.trim().toLowerCase();
+              return c === 'ya' || c === 'yes' || c === 'betul';
+            },
+            explanation: 'Benar! Saat x = 25, y = 25 - 2 = 23. Karena hasilnya sama dengan 23, titik (25, 23) berada pada garis.'
+          }
+        ]
+      },
+      {
+        id: 'ex3',
+        badge: 'Latihan 3 • Sub-bab 11.3 (Garis Sejajar Sumbu)',
+        title: 'Persamaan Garis Horizontal & Vertikal',
+        context: 'Dua garis yang sejajar sumbu koordinat berpotongan di titik (-9.5, 7.5).',
+        steps: [
+          {
+            prompt: 'Langkah 1: Tuliskan persamaan garis vertikal (sejajar sumbu-y) yang melalui titik (-9.5, 7.5).',
+            hint: 'Garis vertikal memiliki koordinat-x yang selalu tetap, berbentuk x = ...',
+            placeholder: 'Contoh: x = -9.5',
+            validate: (raw) => {
+              const c = raw.toLowerCase().replace(/\s+/g, '').replace(',', '.');
+              return c === 'x=-9.5';
+            },
+            explanation: 'Tepat! Karena koordinat-x titik tersebut adalah -9.5, persamaan garis vertikalnya adalah x = -9.5.'
+          },
+          {
+            prompt: 'Langkah 2: Tuliskan persamaan garis horizontal (sejajar sumbu-x) yang melalui titik (-9.5, 7.5).',
+            hint: 'Garis horizontal memiliki koordinat-y yang selalu tetap, berbentuk y = ...',
+            placeholder: 'Contoh: y = 7.5',
+            validate: (raw) => {
+              const c = raw.toLowerCase().replace(/\s+/g, '').replace(',', '.');
+              return c === 'y=7.5';
+            },
+            explanation: 'Tepat! Karena koordinat-y titik tersebut adalah 7.5, persamaan garis horizontalnya adalah y = 7.5.'
+          }
+        ]
+      },
+      {
+        id: 'ex4',
+        badge: 'Latihan 4 • Sub-bab 11.4 (Laju & Gradien)',
+        title: 'Sisa Bensin dalam Tangki Mobil',
+        context: 'Sebuah mobil memiliki 30 liter bensin di awal perjalanan. Setelah 1 jam tersisa 24 liter, dan setelah 2 jam tersisa 18 liter.',
+        steps: [
+          {
+            prompt: 'Langkah 1: Berapa laju pemakaian bensin mobil tersebut (dalam liter per jam)?',
+            hint: 'Hitung berkurangnya bensin setiap 1 jam: 30 - 24 = ...',
+            placeholder: 'Angka saja (L/jam)',
+            validate: (raw) => Math.abs(parseFloat(raw.replace(',', '.')) - 6) < 0.001,
+            explanation: 'Benar! Bensin berkurang 6 liter setiap jam (laju pemakaian = 6 liter/jam).'
+          },
+          {
+            prompt: 'Langkah 2: Jika pemakaian tetap 6 liter/jam, berapa jam hingga bensin habis (0 liter)?',
+            hint: 'Bagi total bensin awal (30 liter) dengan laju pemakaian per jam (6).',
+            placeholder: 'Angka saja (jam)',
+            validate: (raw) => Math.abs(parseFloat(raw.replace(',', '.')) - 5) < 0.001,
+            explanation: 'Benar! 30 ÷ 6 = 5 jam hingga bensin habis. Karena grafik menurun dari kiri ke kanan, gradiennya negatif.'
+          }
+        ]
+      },
+      {
+        id: 'ex5',
+        badge: 'Latihan 5 • Sub-bab 11.4 (Membaca Grafik)',
+        title: 'Pertumbuhan Tinggi Tanaman',
+        context: 'Tinggi awal tanaman (hari ke-0) adalah 10 cm. Setiap 10 hari tingginya bertambah 2.5 cm (hari ke-10 = 12.5 cm, hari ke-20 = 15 cm, hari ke-30 = 17.5 cm).',
+        steps: [
+          {
+            prompt: 'Langkah 1: Berapa tinggi tanaman pada hari ke-20 (dalam cm)?',
+            hint: 'Baca nilai tinggi yang bersesuaian dengan waktu 20 hari.',
+            placeholder: 'Angka saja (cm)',
+            validate: (raw) => Math.abs(parseFloat(raw.replace(',', '.')) - 15) < 0.001,
+            explanation: 'Benar! Pada hari ke-20, tinggi tanaman adalah 15 cm.'
+          },
+          {
+            prompt: 'Langkah 2: Berapa pertambahan tinggi tanaman setiap 1 hari (dalam cm)?',
+            hint: 'Dalam 10 hari bertambah 2.5 cm, maka dalam 1 hari bertambah 2.5 ÷ 10.',
+            placeholder: 'Angka saja (cm/hari)',
+            validate: (raw) => Math.abs(parseFloat(raw.replace(',', '.')) - 0.25) < 0.001,
+            explanation: 'Tepat! 2.5 ÷ 10 = 0.25 cm per hari. Karena grafiknya berupa garis lurus menanjak, pertumbuhannya konstan setiap hari.'
+          }
+        ]
+      }
+    ];
+
+    // Menyimpan status langkah yang sudah benar: { [exId]: boolean[] }
+    const progressState = {};
+    guidedExercises.forEach((ex) => {
+      progressState[ex.id] = ex.steps.map(() => false);
+    });
+
+    /**
+     * Merender seluruh kartu latihan soal terbimbing
+     */
+    function renderGuidedExercises() {
+      const container = document.getElementById('guided-exercises-container');
+      container.innerHTML = '';
+
+      guidedExercises.forEach((ex, exIdx) => {
+        const allDone = progressState[ex.id].every(Boolean);
+
+        const card = document.createElement('div');
+        card.className = `rounded-2xl border p-5 sm:p-6 shadow-sm transition ${
+          allDone ? 'bg-emerald-50/40 border-emerald-300' : 'bg-white border-slate-200'
+        }`;
+
+        let stepsHtml = '';
+        ex.steps.forEach((step, sIdx) => {
+          const stepKey = `${ex.id}_s${sIdx}`;
+          const isUnlocked = sIdx === 0 || progressState[ex.id][sIdx - 1];
+          const isDone = progressState[ex.id][sIdx];
+
+          stepsHtml += `
+            <div class="p-4 rounded-xl border ${
+              isDone
+                ? 'bg-emerald-50 border-emerald-200'
+                : isUnlocked
+                ? 'bg-slate-50/80 border-slate-200'
+                : 'bg-slate-100/70 border-slate-200 opacity-65'
+            } space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <p class="text-xs sm:text-sm font-bold text-slate-900">${step.prompt}</p>
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold shrink-0 ${
+                  isDone
+                    ? 'bg-emerald-600 text-white'
+                    : isUnlocked
+                    ? 'bg-blue-100 text-blue-800'
+                    : 'bg-slate-200 text-slate-600'
+                }">
+                  ${isDone ? 'Selesai' : isUnlocked ? 'Aktif' : 'Terkunci'}
+                </span>
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input
+                  id="input_${stepKey}"
+                  type="text"
+                  ${!isUnlocked || isDone ? 'disabled' : ''}
+                  placeholder="${step.placeholder}"
+                  onkeydown="if(event.key==='Enter'){checkGuidedStep('${ex.id}', ${sIdx});}"
+                  class="flex-1 px-3.5 py-2 rounded-xl border border-slate-300 bg-white text-xs sm:text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-100 disabled:text-slate-600"
+                />
+                <div class="flex gap-2">
+                  <button
+                    type="button"
+                    ${!isUnlocked || isDone ? 'disabled' : ''}
+                    onclick="checkGuidedStep('${ex.id}', ${sIdx})"
+                    class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white font-bold text-xs sm:text-sm transition"
+                  >
+                    Periksa
+                  </button>
+                  <button
+                    type="button"
+                    onclick="toggleHint('${stepKey}')"
+                    class="px-3 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-xs transition"
+                  >
+                    Petunjuk
+                  </button>
+                </div>
+              </div>
+
+              <div id="hint_${stepKey}" class="hidden text-xs bg-amber-50 border border-amber-200 text-amber-900 px-3 py-2 rounded-lg">
+                <strong>Petunjuk:</strong> ${step.hint}
+              </div>
+
+              <div id="feedback_${stepKey}" class="${isDone ? '' : 'hidden'} text-xs sm:text-sm px-3.5 py-2.5 rounded-xl ${
+                isDone ? 'bg-emerald-100/80 text-emerald-950 border border-emerald-200' : ''
+              }">
+                ${isDone ? `<strong>${step.explanation}</strong>` : ''}
+              </div>
+            </div>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+              ${ex.badge}
+            </span>
+            ${
+              allDone
+                ? '<span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">✓ Soal Tuntas</span>'
+                : `<span class="text-xs font-semibold text-slate-500">Soal ${exIdx + 1} dari ${guidedExercises.length}</span>`
+            }
+          </div>
+          <h4 class="text-base sm:text-lg font-extrabold text-slate-900 mb-1">${ex.title}</h4>
+          <p class="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed">${ex.context}</p>
+          <div class="space-y-3">
+            ${stepsHtml}
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      updateScoreSummary();
+    }
+
+    /**
+     * Menampilkan atau menyembunyikan kotak petunjuk langkah
+     */
+    function toggleHint(stepKey) {
+      const hintEl = document.getElementById(`hint_${stepKey}`);
+      if (hintEl) {
+        hintEl.classList.toggle('hidden');
+      }
+    }
+
+    /**
+     * Memeriksa jawaban pengguna untuk langkah tertentu
+     */
+    function checkGuidedStep(exId, stepIdx) {
+      const ex = guidedExercises.find((item) => item.id === exId);
+      if (!ex) return;
+
+      const step = ex.steps[stepIdx];
+      const stepKey = `${exId}_s${stepIdx}`;
+      const inputEl = document.getElementById(`input_${stepKey}`);
+      const fbEl = document.getElementById(`feedback_${stepKey}`);
+      const rawVal = (inputEl?.value || '').trim();
+
+      if (!rawVal) {
+        fbEl.className = 'text-xs sm:text-sm px-3.5 py-2.5 rounded-xl bg-rose-50 text-rose-800 border border-rose-200';
+        fbEl.innerHTML = 'Silakan isi jawaban terlebih dahulu sebelum memeriksa.';
+        return;
+      }
+
+      try {
+        const isCorrect = step.validate(rawVal);
+        if (isCorrect) {
+          progressState[exId][stepIdx] = true;
+          renderGuidedExercises();
+        } else {
+          fbEl.className = 'text-xs sm:text-sm px-3.5 py-2.5 rounded-xl bg-rose-50 text-rose-800 border border-rose-200';
+          fbEl.innerHTML = 'Belum tepat. Coba periksa kembali perhitungan atau klik tombol <strong>Petunjuk</strong>.';
+        }
+      } catch (err) {
+        fbEl.className = 'text-xs sm:text-sm px-3.5 py-2.5 rounded-xl bg-rose-50 text-rose-800 border border-rose-200';
+        fbEl.innerHTML = 'Format jawaban belum sesuai. Coba periksa kembali penulisanmu.';
+      }
+    }
+
+    /**
+     * Memperbarui skor dan ringkasan progres latihan
+     */
+    function updateScoreSummary() {
+      const totalQuestions = guidedExercises.length;
+      let completedQuestions = 0;
+
+      guidedExercises.forEach((ex) => {
+        if (progressState[ex.id].every(Boolean)) {
+          completedQuestions += 1;
+        }
+      });
+
+      document.getElementById('nav-score').textContent = `${completedQuestions} / ${totalQuestions}`;
+      document.getElementById('completed-count').textContent = `${completedQuestions} / ${totalQuestions}`;
+
+      const summaryText = document.getElementById('summary-text');
+      if (completedQuestions === totalQuestions) {
+        summaryText.textContent = 'Luar biasa! Kamu telah menyelesaikan seluruh 5 latihan soal terbimbing Bab 11: Graphs.';
+      } else {
+        summaryText.textContent = `Kamu baru menuntaskan ${completedQuestions} dari ${totalQuestions} soal terbimbing. Lanjutkan langkah demi langkah!`;
+      }
+    }
+
+    /**
+     * Mereset seluruh latihan soal terbimbing ke kondisi awal
+     */
+    function resetAllGuidedPractice() {
+      guidedExercises.forEach((ex) => {
+        progressState[ex.id] = ex.steps.map(() => false);
+      });
+      renderGuidedExercises();
+    }
+
+    // Inisialisasi saat halaman dimuat dan saat ukuran layar berubah
+    window.addEventListener('DOMContentLoaded', () => {
+      setScenario('phone');
+      drawLinearExplorer();
+      renderGuidedExercises();
+    });
+
+    window.addEventListener('resize', () => {
+      updateScenarioSim();
+      drawLinearExplorer();
+    });
+  </script>
+</body>
+</html>
